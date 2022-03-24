@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+#kichthuoc{
+    max-width: 100px;
+}
+.pag3,.pag4{
+    display: none;
+}
+.cart1{
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+}.title{
+    background-color: red;
+    color: white;
+}
+.btn1{
+    width: 200px;
+    height: 40px;
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}.btn1 a{
+    color: white;
+
+}
+.del{background-color: white;
+color: black;
+border: 1px solid black;
+border-radius: 5px;}
+#btn3{
+    Background-color:red;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid red;
+}
+.title2{
+    font-weight: bold;
+    color: red;
+}
+.bill{
+    background-color: #00DBDE;
+    background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+}
+.content{color: white;}

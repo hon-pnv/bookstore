@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./admin.js"></script>
+    <title>Document</title>
+   <link rel="stylesheet" href="adnmin.css">
+</head>
+<body >
+    <div class="row">
+        <div class="col col-4">
+            <div class="admin_left">
+                <p class="p_head"><a href=""><i class="fas fa-seedling"></i> ADMIN</a></p>
+                <div class="p_content">
+                    <p class="p_border"></p>
+                    <p class="p_padding" onclick="show_Home_Page()"><i class="fas fa-house-damage"></i> Trang chủ</p>
+                    <p class="p_padding">Quản lý</p>
+                    <p class="p_padding" onclick="showCustommer()"><i class="fas fa-tasks"></i> Quản lý khách hàng</p>
+                    <p class="p_padding" onclick="GetData()"><i class="fas fa-table"></i> Quản lý sản phẩm</p>
+                    <p class="p_padding" onclick="showbill()"> <i class="fas fa-table"></i> Đơn hàng</p>
+                    <p class="p_border"></p>
+                </div>
+                <p class="p_footer"><a href=""><i class="fas fa-chevron-left"></i></a></p>
+            </div>
+        </div>
+        <div class="col col-8">
+            <div class="nen">
+                <div class="form1">
+                        <label for="">Name Product</label><br>
+                        <input type="text" id="product-name"><br><br>
+                        <label for="">Price</label><br>
+                        <input type="text" id="price"> <br>
+                        <label for="">Image</label><br>
+                        <input type="text" id="image"><br><br>
+                        <label for="">Type</label><br>
+                        <input type="text" id="type"><br><br>
+                        <button id ='add' onclick="add()">Add</button>
+                        <button id='update' onload="" onclick="update(document.getElementById('update').value)">Edit</button>
+                        <br>
+                        <br>
+                        <p>Tìm kiếm</p>
+                        <select name="" id="search">
+                            <option value="tiengviet">tiengviet</option>
+                            <option value="englishbook">englishbook</option>
+                            <option value="hoccu">hoccu</option>
+                            <option value="dochoi">dochoi</option>
+                            <option value="phukien">phukien</option>
+                        </select>
+                        <br>
+                        <br>
+                        <button onclick="search()">Search</button>
+                    </div>
+                    <h2>Product</h2>
+                    <table class="table">
+                        <thead class="thead-primary">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col"> Image</th>
+                            <th scope="col"> type</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id ='tbl'>
+                
+                        </tbody>
+                    </table>
+                </div>
+                <div class="khachhang">
+                    <table class="table">
+                        <thead class="thead-primary">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Họ và tên</th>
+                            <th scope="col">Số điện thoại</th>
+                            <th scope="col"> Địa chỉ</th>
+                            <th scope="col"> Xem chi tiết đơn hàng</th>
+                        </tr>
+                        </thead>
+                        <tbody id ='tbl1'>
+                        </tbody>
+                    </table>
+                   
+                </div>
+                <div class="bill">
+                    <table class="table">
+                        <thead class="thead-primary">
+                        <tr> 
+                            <th scope="col">MaHD</th>
+                            <th scope="col">MaKH</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">NamItem</th>
+                            <th scope="col">Price</th>
+                            <th scope="col"> Quanlity</th>
+                            <th scope="col"> Total</th>
+                        </tr>
+                        </thead>
+                        <tbody id ='tbl2'>
+                
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  id="exampleModal" class="modal">
+        <button type="button" class="close" data-dismiss="modal"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-content" >
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Số thứ tự</th>
+                        <th>Ngày mua</th>
+                        <th>tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Số tiền</th>
+                    </tr>
+                </thead>
+                <tbody id="detailorder"></tbody>
+            </table>
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th id="total"scope="col">Tổng tiền</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col" id='tien'>0</th>
+                  </tr>
+                </thead>
+    
+            </table>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+   
+</body>
+</html>
+<!-- <div class="donhang">
+   
+</div> -->

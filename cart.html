@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Document</title><link rel="stylesheet" href="cart.css">
+    <title>Document</title><link rel="stylesheet" href="Homepage.css">
+</head>
+<body onload="addname()">
+    <div class="container">
+            
+        <div class="row">
+                <div class="col-4">
+                    <img src="https://nhasachphuongnam.com/images/logos/124/Logo_290x56px-01__002_.jpg" alt="">
+                </div>
+                <!-- <div class="col-2">
+                    <i class="fas fa-phone-alt"></i> <span  id ='phone'>0879364221</span>
+                    <p>Thứ 2 - Thứ 6: 8h-17h</p>
+                </div> -->
+                <div class="col-4">
+                    <nav class="navbar navbar-light justify-content-between">
+                        <form class="form-inline">
+                          <input class="form-control input1" type="search" placeholder="Search" aria-label="Search">
+                          <button class="btn but1" type="submit">Search</button>
+                        </form>
+                      </nav>
+                </div>
+                <div class="col-2">
+                    <p id ="vlogin"></p>
+                </div>
+                <div class="col-2">
+                    <p><a href="./cart.html"><i class="fas fa-shopping-cart changesize icon1" ></i></a> <sup id="quantily">0</sup></p>
+                </div>
+        </div>
+    </div>
+    </div>
+    <div class="cart1" id="cart1">
+        <table class="table">
+            <thead class="title">
+              <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Name Product</th>
+                <th scope="col">Img</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity </th>
+                <th scope="col">Total</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody id ='tbl'>
+            </tbody>
+        </table>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th id="total"scope="col">Tổng tiền</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col" id='tien'>0</th>
+              </tr>
+            </thead>
+
+        </table>
+       
+        <div class="row">
+            <div class="col-7 ml-5">
+                <button class="btn1" ><a href="./Homepage.html">Quay lại trang chủ </a></button>
+            </div>
+            <div class="col-2 mr-1">
+                <button class="btn1" onclick="thanhtoan()">Tiến hành thanh toán</button>
+            </div>
+        </div>
+    </div>
+        <div class="pag3">
+          <div class="row bill" style="margin: 20px; " >
+              <div class="col-md-4">
+      
+                  <form>
+      
+                      <br/>
+                      <label class="title2">1: Thông tin khách hàng</label><br/>
+                      <br/>
+                      <input class="form-control" type="text" name="User Name"  id="fn" onkeypress="return isCharacterKey(event)" required>
+                      <br/>
+      
+                      <input class="form-control" type="text" name="dien_thoai"  id="dt" onkeypress="return isNumberKey(event)" required>
+                      <br/>
+                      <input class="form-control" type="text" name="diachi" id="dc" onkeypress="return isCharacterKey(event)" required>
+                      <br/>
+                  </form>
+              </div>
+      
+              <div class="col-md-4">
+                  <form>
+                      <br/>
+                      <label class="title2">2: Chọn hình thức thanh toán</label>
+                      <br/>
+                      <br/>
+                      <select class="form-control" id="exampleFormControlSelect">
+                          <option>Tiền mặt</option>
+                          <option>Internet Banking/ATM nội địa giảm</option>
+                          <option>Thanh toán trực tuyến</option>
+                          <option>MOMO banking</option>
+                          <option>Ngân hàng nội địa</option>
+                      </select>
+                      <label>Thanh toán online bằng Internet Banking hoặc thẻ ATM nội địa để được giảm giá ngay 5%, hỗ trợ tất cả ngân hàng, thanh toán an toàn qua cổng VTCPAY</label>
+                  </form>
+              </div>
+              <div class="col-md-4">
+                      <br/>
+                      <label class="title2">3: Xem lại đơn hàng</label>
+                  <table class="table content">
+                      <tbody>
+                    <tr>
+                    <td>Ngày đặt hàng</td>
+                            <td id="Date"></td>
+        
+                    </tr>
+                      <tr>
+                          <td>Tên Sản Phẩm</td>
+                          <td id="nameProduct"></td>
+      
+                      </tr>
+                      <tr>
+                          <td>Tổng cộng</td>
+                          <td id="sumtotal"></td>
+                      </tr>
+                      </tbody>
+                  </table>
+                  <button id="btn3" onclick="abc()" >Giao Hàng</button>
+              </div>
+          </div>
+      </div>
+      <div class="pag4">
+          <div class="content">
+              <h1>THÔNG TIN ĐƠN HÀNG</h1>
+          </div>
+          <table class="table">
+              <thead >
+                  <tr>
+                      <th scope="col" id ='name'></th>
+                  </tr>
+                  <tr>
+                      <th scope="col" id = 'adress'></th>
+                  </tr>
+                  <tr>
+                      <th scope="col" id ='phone'></th>
+                  </tr>
+                  <tr>    
+                      <th scope="col" id ='thanhtoan'></th>
+                  </tr>
+                  <tr>
+                      <th scope="col" id ='tongtienthanhtoan'></th>
+                  </tr>
+                  
+                
+              </thead>
+          </table>
+          <button onclick="dathang()">Xác nhận đơn hàng</button>
+           
+      </div>
+    
+    <script src="./cart.js"></script>
+</body>
+</html>
